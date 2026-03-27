@@ -59,6 +59,7 @@ export const ENV_VAR_NAMES = {
   perplexity: 'PERPLEXITY_API_KEY',
   zai:        'ZAI_API_KEY',
   gemini:     'GEMINI_API_KEY',
+  'ollama-cloud': 'OLLAMA_API_KEY',
 }
 
 // 📖 OPENCODE_MODEL_MAP: sparse table of model IDs that differ between sources.js and OpenCode's
@@ -249,5 +250,12 @@ export const PROVIDER_METADATA = {
     signupHint: 'Login at opencode.ai/auth to get your Zen API key',
     rateLimits: 'Free tier models — requires OpenCode Zen API key',
     zenOnly: true,
+  },
+  'ollama-cloud': {
+    label: 'Ollama Cloud',
+    color: chalk.rgb(204, 204, 204), // neutral grey — matches Ollama branding
+    signupUrl: 'https://ollama.com/cloud',
+    signupHint: 'Sign in → Settings → API Keys',
+    rateLimits: 'Free tier: limited quotas (hourly/daily); Pro: $20/mo for higher quotas',
   },
 }
