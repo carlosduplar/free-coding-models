@@ -1,6 +1,21 @@
 # Changelog
 ---
 
+## [0.3.26] - 2026-03-27
+
+### Added
+- **Ollama Cloud provider** - New provider with 12 free models hosted on Ollama Cloud (OpenAI-compatible API at `https://ollama.com/v1/chat/completions`)
+  - Models: MiniMax M2.7 🆕 (78.0%), MiniMax M2.5 🆕 (80.2%), Gemini 3 Flash 🆕 (78.0%), GLM-5 🆕 (77.8%), Kimi K2.5 🆕 (76.8%), Qwen 3.5 🆕 (76.2%), GLM-4.7 🆕 (73.8%), DeepSeek V3.2 🆕 (73.0%), Devstral 2 🆕 (72.2%), Qwen3 Coder Next 🆕 (70.6%), MiniMax M2 🆕 (69.4%), Devstral Small 2 🆕 (65.8%)
+  - Requires `OLLAMA_API_KEY` from https://ollama.com/settings/api-keys
+- **OpenCode Zen new models** - Added MiMo V2 Pro Free 🆕 (78.0%) and MiMo V2 Omni Free 🆕 (74.8%) with SWE-bench Verified scores
+- **🆕 badge for new providers** - Ollama Cloud and OpenCode Zen models now show the "new" emoji badge
+
+### Changed
+- Removed MiMo V2 Flash Free from OpenCode Zen (no longer available)
+
+### Note
+- Pre-existing test failures (2 of 288) on Windows: tool binary resolution and OpenClaw API key test are environment-related, not caused by these changes
+
 ## [0.3.25] - 2026-03-19
 
 ### Changed

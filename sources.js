@@ -29,8 +29,8 @@
  *   📖 Secondary: https://swe-rebench.com (independent evals, scores are lower)
  *   📖 Leaderboard tracker: https://www.marc0.dev/en/leaderboard
  *
- *   @exports nvidiaNim, groq, cerebras, sambanova, openrouter, huggingface, replicate, deepinfra, fireworks, codestral, hyperbolic, scaleway, googleai, siliconflow, together, cloudflare, perplexity, qwen, iflow — model arrays per provider
- *   @exports sources — map of { nvidia, groq, cerebras, sambanova, openrouter, huggingface, replicate, deepinfra, fireworks, codestral, hyperbolic, scaleway, googleai, siliconflow, together, cloudflare, perplexity, qwen, iflow } each with { name, url, models }
+ *   @exports nvidiaNim, groq, cerebras, sambanova, openrouter, huggingface, replicate, deepinfra, fireworks, codestral, hyperbolic, scaleway, googleai, siliconflow, together, cloudflare, perplexity, qwen, iflow, ollamaCloud — model arrays per provider
+ *   @exports sources — map of { nvidia, groq, cerebras, sambanova, openrouter, huggingface, replicate, deepinfra, fireworks, codestral, hyperbolic, scaleway, googleai, siliconflow, together, cloudflare, perplexity, qwen, iflow, ollama-cloud } each with { name, url, models }
 
  *   @exports MODELS — flat array of [modelId, label, tier, sweScore, ctx, providerKey]
  *
@@ -373,9 +373,33 @@ export const gemini = [
 export const opencodeZen = [
   ['big-pickle',                              'Big Pickle 🆕',             'S+', '72.0%', '200k'],
   ['gpt-5-nano',                              'GPT 5 Nano 🆕',            'S',  '65.0%', '128k'],
-  ['mimo-v2-flash-free',                      'MiMo V2 Flash Free 🆕',    'S+', '73.4%', '256k'],
+  ['mimo-v2-pro-free',                        'MiMo V2 Pro Free 🆕',      'S+', '78.0%', '1M'],
+  ['mimo-v2-omni-free',                       'MiMo V2 Omni Free 🆕',     'S+', '74.8%', '256k'],
   ['minimax-m2.5-free',                       'MiniMax M2.5 Free 🆕',     'S+', '80.2%', '200k'],
   ['nemotron-3-super-free',                   'Nemotron 3 Super Free 🆕',  'A+', '52.0%', '128k'],
+]
+
+// 📖 Ollama Cloud source - https://ollama.com/cloud
+// 📖 OpenAI-compatible endpoint: https://ollama.com/v1/chat/completions
+// 📖 Free tier: Limited quotas (hourly/daily caps); Pro: $20/mo for higher quotas
+// 📖 API keys at https://ollama.com → Settings → API Keys
+// 📖 Models use :cloud suffix for cloud-hosted inference
+export const ollamaCloud = [
+  // ── S+ tier — SWE-bench Verified ≥70% ──
+  ['minimax-m2.5:cloud',                      'MiniMax M2.5 🆕',              'S+', '80.2%', '198k'],
+  ['minimax-m2.7:cloud',                      'MiniMax M2.7 🆕',              'S+', '78.0%', '256k'],
+  ['gemini-3-flash-preview:cloud',            'Gemini 3 Flash 🆕',            'S+', '78.0%', '1m'],
+  ['glm-5:cloud',                             'GLM-5 🆕',                     'S+', '77.8%', '198k'],
+  ['kimi-k2.5:cloud',                         'Kimi K2.5 🆕',                 'S+', '76.8%', '256k'],
+  ['qwen3.5:cloud',                           'Qwen 3.5 🆕',                  'S+', '76.2%', '256k'],
+  // ── S tier — SWE-bench Verified 60–70% ──
+  ['glm-4.7:cloud',                           'GLM-4.7 🆕',                   'S',  '73.8%', '198k'],
+  ['deepseek-v3.2:cloud',                     'DeepSeek V3.2 🆕',             'S',  '73.0%', '160k'],
+  ['devstral-2:cloud',                        'Devstral 2 🆕',                'S',  '72.2%', '256k'],
+  ['qwen3-coder-next:cloud',                  'Qwen3 Coder Next 🆕',          'S',  '70.6%', '256k'],
+  // ── A+ tier — SWE-bench Verified 50–60% ──
+  ['minimax-m2:cloud',                        'MiniMax M2 🆕',                'A+', '69.4%', '200k'],
+  ['devstral-small-2:cloud',                  'Devstral Small 2 🆕',          'A+', '65.8%', '256k'],
 ]
 
 // 📖 All sources combined - used by the main script
@@ -506,6 +530,11 @@ export const sources = {
     url: 'https://opencode.ai/zen/v1/chat/completions',
     models: opencodeZen,
     zenOnly: true,
+  },
+  'ollama-cloud': {
+    name: 'Ollama Cloud',
+    url: 'https://ollama.com/v1/chat/completions',
+    models: ollamaCloud,
   },
 }
 
